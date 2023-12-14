@@ -35,3 +35,10 @@ def update(todo_id):
     todo.complete = not todo.complete
     db.session.commit()
     return redirect(url_for("home"))
+
+@app.get("/delete/<int:todo_id>")
+def delete(todo_id):
+    todo = db.session.query(Todo).filter(Todo.id == todo_id).first()
+    db.session.delete(todo)
+    db.session.commit()
+    return redirect(url_for("home"))

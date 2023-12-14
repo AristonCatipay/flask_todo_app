@@ -18,5 +18,6 @@ db.create_all()
 
 @app.get("/")
 def home():
-    return "Hello World!"
+    todo_list = db.session.query(Todo).all()
+    return render_template("base.html", todo_list=todo_list)
 

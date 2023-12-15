@@ -30,8 +30,8 @@ def create():
     db.session.commit()
     return redirect(url_for("read"))
 
-@app.get("/update/<int:todo_id>")
-def update(todo_id):
+@app.get("/update/complete/<int:todo_id>")
+def is_complete(todo_id):
     todo = db.session.query(Todo).filter(Todo.id == todo_id).first()
     todo.complete = not todo.complete
     db.session.commit()

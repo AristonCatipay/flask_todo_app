@@ -20,7 +20,7 @@ with app.app_context():
 @app.get("/")
 def read():
     todo_list = db.session.query(Todo).all()
-    return render_template("base.html", todo_list=todo_list)
+    return render_template("home.html", todo_list=todo_list)
 
 @app.post("/add")
 def create():
